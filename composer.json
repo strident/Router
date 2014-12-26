@@ -1,0 +1,15 @@
+{
+    "name": "seer/routr",
+    "description": "An incredibly fast and simple routing library.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elliot Wright",
+            "email": "elliot@elliotwright.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Routr\\": "src/" }
+    },
+    "require": {}
+}
