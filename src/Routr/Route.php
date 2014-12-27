@@ -18,42 +18,160 @@ namespace Routr;
  */
 class Route
 {
+    const CONNECT = "CONNECT";
+    const DELETE  = "DELETE";
+    const GET     = "GET";
+    const HEAD    = "HEAD";
+    const OPTIONS = "OPTIONS";
+    const PATCH   = "PATCH";
+    const POST    = "POST";
+    const PUT     = "PUT";
+    const TRACE   = "TRACE";
+
     /**
      * @var string
      */
-    protected $regexp;
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var array
+     */
+    protected $targets;
 
 
     /**
      * Constructor
      *
-     * @param $regexp
+     * @param string $name
+     * @param string $path
      */
-    public function __construct($regexp)
+    public function __construct($name, $path)
     {
-        $this->regexp = $regexp;
+        $this->name = $name;
+        $this->path = $path;
+        $this->targets = [];
     }
 
     /**
-     * Get regexp
+     * Set a route target
      *
-     * @return string
-     */
-    public function getRegexp()
-    {
-        return $this->regexp;
-    }
-
-    /**
-     * Set regexp
-     *
-     * @param string $regexp
+     * @param string $method
+     * @param mixed  $target
      *
      * @return Route
      */
-    public function setRegexp($regexp)
+    public function target($method, $target)
     {
-        $this->regexp = $regexp;
+        $method = strtoupper($method);
+
+        if (!constant("self::$method")) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid request method "%s" specified.',
+                $method
+            ));
+        }
+
+        $this->targets[$method] = $target;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Route
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Route
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+        return $this;
+    }
+
+    /**
+     * Get targets
+     *
+     * @return array
+     */
+    public function getTargets()
+    {
+        return $this->targets;
+    }
+
+    /**
+     * Get target for method
+     *
+     * @param string $method
+     *
+     * @return mixed
+     */
+    public function getTargetForMethod($method)
+    {
+        return $this->targets[$method];
+    }
+
+    /**
+     * Has targets for method
+     *
+     * @param string $method
+     *
+     * @return bool
+     */
+    public function hasTargetsForMethod($method)
+    {
+        return isset($this->targets[$method]);
+    }
+
+    /**
+     * Set targets
+     *
+     * @param array $targets
+     *
+     * @return Route
+     */
+    public function setTargets(array $targets)
+    {
+        $this->targets = $targets;
+
         return $this;
     }
 }

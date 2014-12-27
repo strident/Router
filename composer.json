@@ -9,7 +9,9 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Routr\\": "src/" }
+        "psr-0": { "Routr\\": "src/" }
     },
-    "require": {}
+    "require": {
+        "symfony/routing": "~2.6"
+    }
 }

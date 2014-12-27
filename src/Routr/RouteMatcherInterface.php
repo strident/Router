@@ -19,12 +19,13 @@ namespace Routr;
 interface RouteMatcherInterface
 {
     /**
-     * Match a path against routes
+     * Match the route context against routes
      *
-     * @param string $path
+     * @param string $method
+     * @param string $url
      * @param array  $routes
      *
      * @return mixed
      */
-    public function match($path, $routes);
+    public function match($method, $url, $routes);
 }

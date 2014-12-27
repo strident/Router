@@ -19,11 +19,6 @@ namespace Routr;
 class Router
 {
     /**
-     * @var RouteCompilerInterface
-     */
-    protected $routeCompiler;
-
-    /**
      * @var RouteMatcherInterface
      */
     protected $routeMatcher;
@@ -37,14 +32,11 @@ class Router
     /**
      * Constructor
      *
-     * @param RouteCompilerInterface $routeCompiler
      * @param RouteMatcherInterface  $routeMatcher
      */
-    public function __construct(RouteCompilerInterface $routeCompiler, RouteMatcherInterface $routeMatcher)
+    public function __construct(RouteMatcherInterface $routeMatcher)
     {
-        $this->routeCompiler = $routeCompiler;
-        $this->routeMatcher  = $routeMatcher;
-
+        $this->routeMatcher = $routeMatcher;
         $this->routes = [];
     }
 
@@ -53,24 +45,24 @@ class Router
      *
      * @param string $name
      * @param string $path
+     *
+     * @return Route
      */
     public function route($name, $path)
     {
-        $routes[$name] = $this->routeCompiler->compile($path);
+        return $this->routes[$name] = new Route($name, $path);
     }
 
     /**
      * Dispatch the current request URL to the routes
      *
+     * @param string $method
      * @param string $url
      *
      * @return array
      */
-    public function dispatch($url)
+    public function dispatch($method, $url)
     {
-        $parsed = parse_url($url);
-        $path   = $parsed['path'];
-
-        return $this->routeMatcher->match($path, $this->routes);
+        return $this->routeMatcher->match($method, $url, $this->routes);
     }
 }
