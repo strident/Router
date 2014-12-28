@@ -54,12 +54,12 @@ class Router
     }
 
     /**
-     * Dispatch the current request URL to the routes
+     * Dispatch the current request URL to the routes and retrieve target
      *
      * @param string $method
      * @param string $url
      *
-     * @return array
+     * @return mixed
      */
     public function dispatch($method, $url)
     {
