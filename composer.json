@@ -1,5 +1,5 @@
 {
-    "name": "strident/routr",
+    "name": "strident/router",
     "description": "An incredibly fast and simple routing library.",
     "license": "MIT",
     "authors": [
@@ -9,7 +9,7 @@
         }
     ],
     "autoload": {
-        "psr-0": { "Routr\\": "src/" }
+        "psr-0": { "Router\\": "src/" }
     },
     "require-dev": {
         "phpunit/phpunit": "*"

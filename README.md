@@ -1,4 +1,4 @@
-Routr
-=====
+Router
+======
 
-An incredibly fast and simple routing library.
+Routing component designed for ease of use and speed. Built for Trident.
