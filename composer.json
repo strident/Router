@@ -11,10 +11,7 @@
     "autoload": {
         "psr-0": { "Routr\\": "src/" }
     },
-    "require": {
-        "symfony/routing": "~2.6"
-    },
     "require-dev": {
-        "codeception/codeception": "*"
+        "phpunit/phpunit": "*"
     }
 }
