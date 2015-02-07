@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Routr package.
+ * This file is part of the Router package.
  *
  * (c) Elliot Wright <elliot@elliotwright.co>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Routr;
+namespace Router;
 
 /**
  * Router
@@ -18,6 +18,11 @@ namespace Routr;
  */
 class Router
 {
+    /**
+     * @var RouteFactory
+     */
+    protected $routeFactory;
+
     /**
      * @var RouteMatcherInterface
      */
@@ -32,10 +37,12 @@ class Router
     /**
      * Constructor
      *
+     * @param RouteFactory           $routeFactory
      * @param RouteMatcherInterface  $routeMatcher
      */
-    public function __construct(RouteMatcherInterface $routeMatcher)
+    public function __construct(RouteFactory $routeFactory, RouteMatcherInterface $routeMatcher)
     {
+        $this->routeFactory = $routeFactory;
         $this->routeMatcher = $routeMatcher;
         $this->routes = [];
     }
@@ -50,7 +57,9 @@ class Router
      */
     public function route($name, $path)
     {
-        return $this->routes[$name] = new Route($name, $path);
+        $route = $this->routeFactory->build($name, $path);
+
+        return $this->routes[$name] = $route;
     }
 
     /**

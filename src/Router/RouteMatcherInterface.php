@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Routr package.
+ * This file is part of the Router package.
  *
  * (c) Elliot Wright <elliot@elliotwright.co>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Routr;
+namespace Router;
 
 /**
  * Interface RouteMatcherInterface

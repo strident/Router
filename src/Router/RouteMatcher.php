@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Routr package.
+ * This file is part of the Router package.
  *
  * (c) Elliot Wright <elliot@elliotwright.co>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Routr;
+namespace Router;
 
 /**
  * RouteMatcher
@@ -42,10 +42,10 @@ class RouteMatcher implements RouteMatcherInterface
             array_shift($variables);
 
             $matched = [
-                'method'    => $method,
-                'name'      => $route->getName(),
-                'target'    => $route->getTargetForMethod($method),
-                'variables' => $variables,
+                'method'     => $method,
+                'name'       => $route->getName(),
+                'parameters' => $variables,
+                'target'     => $route->getTargetForMethod($method),
             ];
 
             break;
