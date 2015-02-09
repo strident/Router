@@ -11,6 +11,9 @@
     "autoload": {
         "psr-0": { "Router\\": "src/" }
     },
+    "autoload-dev": {
+        "psr-4": { "Router\\Tests\\": "tests/" }
+    },
     "require-dev": {
         "phpunit/phpunit": "*"
     }
