@@ -3,7 +3,8 @@
 /**
  * This file is part of the Router package.
  *
- * (c) Elliot Wright <elliot@elliotwright.co>
+ * @package Router
+ * @since   2015
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,10 +12,12 @@
 
 namespace Router;
 
+use \RuntimeException;
+
 /**
  * Route
  *
- * @author <elliot@elliotwright.co>
+ * @author Elliot Wright <elliot@elliotwright.co>
  */
 class Route
 {
@@ -55,30 +58,6 @@ class Route
         $this->name = $name;
         $this->path = $path;
         $this->targets = [];
-    }
-
-    /**
-     * Set a route target
-     *
-     * @param string $method
-     * @param mixed  $target
-     *
-     * @return Route
-     */
-    public function target($method, $target)
-    {
-        $method = strtoupper($method);
-
-        if (!constant("self::$method")) {
-            throw new \InvalidArgumentException(sprintf(
-                'Invalid request method "%s" specified.',
-                $method
-            ));
-        }
-
-        $this->targets[$method] = $target;
-
-        return $this;
     }
 
     /**
@@ -146,6 +125,14 @@ class Route
      */
     public function getTargetForMethod($method)
     {
+        if (!$this->hasTargetForMethod($method)) {
+            throw new RuntimeException(sprintf(
+                "Route named '%s' has no target defined for method '%s'.",
+                $this->getName(),
+                $method
+            ));
+        }
+
         return $this->targets[$method];
     }
 
@@ -156,7 +143,7 @@ class Route
      *
      * @return bool
      */
-    public function hasTargetsForMethod($method)
+    public function hasTargetForMethod($method)
     {
         return isset($this->targets[$method]);
     }
@@ -171,6 +158,30 @@ class Route
     public function setTargets(array $targets)
     {
         $this->targets = $targets;
+
+        return $this;
+    }
+
+    /**
+     * Set a route target
+     *
+     * @param string $method
+     * @param mixed  $target
+     *
+     * @return Route
+     */
+    public function target($method, $target)
+    {
+        $method = strtoupper($method);
+
+        if (!@constant("self::$method")) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid request method "%s" specified.',
+                $method
+            ));
+        }
+
+        $this->targets[$method] = $target;
 
         return $this;
     }

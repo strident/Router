@@ -3,7 +3,8 @@
 /**
  * This file is part of the Router package.
  *
- * (c) Elliot Wright <elliot@elliotwright.co>
+ * @package Router
+ * @since   2015
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +15,7 @@ namespace Router;
 /**
  * RouteMatcher
  *
- * @author <elliot@elliotwright.co>
+ * @author Elliot Wright <elliot@elliotwright.co>
  */
 class RouteMatcher implements RouteMatcherInterface
 {
