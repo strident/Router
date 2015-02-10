@@ -1,7 +1,7 @@
 {
     "name": "strident/router",
     "type": "library",
-    "description": "An incredibly fast and simple routing library.",
+    "description": "Routing component designed for ease of use and speed. Built for Trident.",
     "keywords": [ "router", "component", "trident" ],
     "license": "MIT",
     "homepage": "https://github.com/Strident/Router",
