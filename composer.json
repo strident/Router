@@ -1,7 +1,10 @@
 {
     "name": "strident/router",
+    "type": "library",
     "description": "An incredibly fast and simple routing library.",
+    "keywords": [ "router", "component", "trident" ],
     "license": "MIT",
+    "homepage": "https://github.com/Strident/Router",
     "authors": [
         {
             "name": "Elliot Wright",
@@ -14,7 +17,12 @@
     "autoload-dev": {
         "psr-4": { "Router\\Tests\\": "tests/" }
     },
+    "require": {
+        "php": ">=5.4"
+    },
     "require-dev": {
-        "phpunit/phpunit": "*"
-    }
+        "phpunit/phpunit": "*",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "minimum-stability": "dev"
 }
