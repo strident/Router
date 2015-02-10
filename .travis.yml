@@ -4,21 +4,17 @@ sudo: false
 
 php:
 - 5.6
-  env: REPORT_COVERAGE=true
 - 5.5
-  env: REPORT_COVERAGE=false
 - 5.4
-  env: REPORT_COVERAGE=false
 - hhvm
-  env: REPORT_COVERAGE=false
 
 before_script:
 - composer selfupdate
 - composer install --no-interaction
 
 script:
-- phpunit
+- phpunit --coverage-text --coverage-html build/html --report-useless-tests
 
 after_script:
 - php vendor/bin/test-reporter --stdout > codeclimate.json
-- ./report-coverage.sh
+- "if [ \"$TRAVIS_PHP_VERSION\" == \"5.6\" ]; then curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
