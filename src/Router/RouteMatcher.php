@@ -51,7 +51,7 @@ class RouteMatcher implements RouteMatcherInterface
 
             break;
         }
-
+        
         return $matched;
     }
 
@@ -77,9 +77,11 @@ class RouteMatcher implements RouteMatcherInterface
                 '(?<' . $parameter . '>[A-z0-9_-]+)',
                 $regexp
             );
+
+            var_dump($regexp);
         }
 
-        $regexp = "#$regexp#";
+        $regexp = "#^$regexp$#";
 
         return [
             'parameters' => $parameters,
