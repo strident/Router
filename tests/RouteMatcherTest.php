@@ -119,4 +119,24 @@ class RouteMatcherTest extends TestCase
 
         $this->testMatcher->match("GET", "/foo/bar/baz", [ $route ]);
     }
+
+    public function testMatchDoesNotMatchPartialMatches()
+    {
+        // Create route for individual entity
+        $route1 = new Route("foo", "/bar/{param}");
+        $route1
+            ->target("GET", "FooController::getAction")
+            ->target("DELETE", "FooController::deleteAction")
+        ;
+
+        // Create route for collection of same entities
+        $route2 = new Route("foo_collection", "/bar");
+        $route2
+            ->target("GET", "FooController::getCollectionAction")
+            ->target("POST", "FooController::postAction")
+        ;
+
+        // Pass a URL where the start ("/bar") would match the route (check against partial match)
+        $this->assertNull($this->testMatcher->match("POST", "/bar/53", [ $route1, $route2 ]));
+    }
 }
