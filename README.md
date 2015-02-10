@@ -9,15 +9,15 @@ Routing component designed for ease of use and speed. Built for Trident.
 
 Installation is available via Composer. Add the package to your `composer.json`:
 
+```
 $ ./composer.phar require strident/router ~1.0
+```
 
 ##Usage
 
 The Strident Router package is flexible and allows you to swap out components to extend it easier. To create a `Router`, do the following:
 
-```
-<?php
-
+```php
 use Router\RouteFactory;
 use Router\RouteMatcher;
 use Router\Router;
@@ -29,11 +29,7 @@ $router  = new Router($factory, $matcher);
 
 From there, you can define routes like so:
 
-```
-<?php
-
-// ...
-
+```php
 $router->route("route_name", "/route/path/{parameter}/{placeholders}")
     ->target("GET", "FooController::getAction")
     ->target("POST", "FooController::postAction")
@@ -44,11 +40,7 @@ The `route()` method of the `Router` returns the instance of a the created `Rout
 
 To dispatch the current request in the `Router`, use the `dispatch()` method of the `Router`.
 
-```
-<?php
-
-// ...
-
+```php
 $matched = $router->dispatch("GET", "/route/path/1/2");
 ```
 
