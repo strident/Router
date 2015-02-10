@@ -13,7 +13,7 @@ before_script:
 - composer install --no-interaction
 
 script:
-- phpunit
+- phpunit --coverage-html build/html --report-useless-tests
 
 after_script:
 - php vendor/bin/test-reporter --stdout > codeclimate.json
