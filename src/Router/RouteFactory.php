@@ -15,7 +15,7 @@ namespace Router;
 /**
  * Route Factory
  *
- * @author Elliot Wright <elliot@elliotwright.co>
+ * @author Elliot Wright
  */
 class RouteFactory
 {

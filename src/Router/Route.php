@@ -17,7 +17,7 @@ use \RuntimeException;
 /**
  * Route
  *
- * @author Elliot Wright <elliot@elliotwright.co>
+ * @author Elliot Wright
  */
 class Route
 {

@@ -15,7 +15,7 @@ namespace Router;
 /**
  * Interface RouteMatcherInterface
  *
- * @author Elliot Wright <elliot@elliotwright.co>
+ * @author Elliot Wright
  */
 interface RouteMatcherInterface
 {

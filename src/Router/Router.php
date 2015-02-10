@@ -15,7 +15,7 @@ namespace Router;
 /**
  * Router
  *
- * @author Elliot Wright <elliot@elliotwright.co>
+ * @author Elliot Wright
  */
 class Router
 {

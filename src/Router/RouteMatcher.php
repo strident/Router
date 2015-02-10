@@ -15,7 +15,7 @@ namespace Router;
 /**
  * RouteMatcher
  *
- * @author Elliot Wright <elliot@elliotwright.co>
+ * @author Elliot Wright
  */
 class RouteMatcher implements RouteMatcherInterface
 {
@@ -36,7 +36,7 @@ class RouteMatcher implements RouteMatcherInterface
                 continue;
             }
 
-            if (!$route->hasTargetsForMethod($method)) {
+            if (!$route->hasTargetForMethod($method)) {
                 continue;
             }
 
@@ -72,7 +72,11 @@ class RouteMatcher implements RouteMatcherInterface
                 ));
             }
 
-            $regexp = str_replace('{' . $parameter . '}', '([A-z0-9_-]+)', $regexp);
+            $regexp = str_replace(
+                '{' . $parameter . '}',
+                '(?<' . $parameter . '>[A-z0-9_-]+)',
+                $regexp
+            );
         }
 
         $regexp = "#$regexp#";
