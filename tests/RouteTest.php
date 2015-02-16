@@ -10,10 +10,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Router\Tests;
+namespace Strident\Router\Tests;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Router\Route;
+use Strident\Router\Route;
 
 /**
  * RouteTest

@@ -19,10 +19,10 @@
         "codeclimate/php-test-reporter": "~0.1"
     },
     "autoload": {
-        "psr-0": { "Router\\": "src/" }
+        "psr-4": { "Strident\\Router\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Router\\Tests\\": "tests/" }
+        "psr-4": { "Strident\\Router\\Tests\\": "tests/" }
     },
     "minimum-stability": "dev"
 }

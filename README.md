@@ -18,9 +18,9 @@ $ composer require strident/router ~1.0
 The Strident Router package is flexible and allows you to swap out components to extend it easier. To create a `Router`, do the following:
 
 ```php
-use Router\RouteFactory;
-use Router\RouteMatcher;
-use Router\Router;
+use Strident\Router\RouteFactory;
+use Strident\Router\RouteMatcher;
+use Strident\Router\Router;
 
 $factory = new RouteFactory();
 $matcher = new RouteMatcher();

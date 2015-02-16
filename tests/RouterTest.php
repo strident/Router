@@ -10,12 +10,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Router\Tests;
+namespace Strident\Router\Tests;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Router\RouteFactory;
-use Router\RouteMatcher;
-use Router\Router;
+use Strident\Router\RouteFactory;
+use Strident\Router\RouteMatcher;
+use Strident\Router\Router;
 
 /**
  * RouterTest
@@ -67,7 +67,7 @@ class RouterTest extends TestCase
     {
         $route = $this->testRouter->route($this->testName, $this->testPath);
 
-        $this->assertInstanceOf("Router\\Route", $route);
+        $this->assertInstanceOf("Strident\\Router\\Route", $route);
         $this->assertEquals($this->testName, $route->getName());
         $this->assertEquals($this->testPath, $route->getPath());
     }

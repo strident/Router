@@ -10,10 +10,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Router\Tests;
+namespace Strident\Router\Tests;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Router\RouteFactory;
+use Strident\Router\RouteFactory;
 
 /**
  * RouteFactoryTest
@@ -37,7 +37,7 @@ class RouteFactoryTest extends TestCase
     {
         $route = $this->testFactory->build("foo", "/bar");
 
-        $this->assertInstanceOf("Router\\Route", $route);
+        $this->assertInstanceOf("Strident\\Router\\Route", $route);
     }
 
     public function testBuildProvidesParametersToRoute()
