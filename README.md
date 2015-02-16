@@ -10,7 +10,7 @@ Routing component designed for ease of use and speed. Built for Trident.
 Installation is available via Composer. Add the package to your `composer.json`:
 
 ```
-$ composer require strident/router ~1.0
+$ composer require strident/router ~2.0
 ```
 
 ##Usage
