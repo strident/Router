@@ -122,6 +122,8 @@ class Route
      * @param string $method
      *
      * @return mixed
+     *
+     * @throws \RuntimeException
      */
     public function getTargetForMethod($method)
     {
@@ -169,12 +171,14 @@ class Route
      * @param mixed  $target
      *
      * @return Route
+     *
+     * @throws \InvalidArgumentException
      */
     public function target($method, $target)
     {
         $method = strtoupper($method);
 
-        if (!@constant("self::$method")) {
+        if (!defined("self::$method")) {
             throw new \InvalidArgumentException(sprintf(
                 'Invalid request method "%s" specified.',
                 $method

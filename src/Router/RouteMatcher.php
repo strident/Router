@@ -57,6 +57,8 @@ class RouteMatcher implements RouteMatcherInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @throws RuntimeException
      */
     protected function compileRoute(Route $route)
     {
